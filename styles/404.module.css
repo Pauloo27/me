@@ -1,0 +1,27 @@
+.main_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.error_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error_code {
+  padding: 10px;
+  border-right: 2px solid var(--text-main);
+}
+
+.error_message {
+  padding: 10px;
+}
+
+.gif {
+  margin: 10px;
+  padding: 15px;
+  height: 50vh;
+}
