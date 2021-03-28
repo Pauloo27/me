@@ -20,7 +20,7 @@ const projects = [
   {
     name: "Gotroller",
     description: "MPRIS controller wrote in Go for Polybar with extra GUI",
-    thumbnail: "https://i.imgur.com/HrEGG2E.png",
+    thumbnail: "https://i.imgur.com/ArxvWCB.png",
     source: "https://github.com/Pauloo27/gotroller",
     madeWith: [golang],
   },

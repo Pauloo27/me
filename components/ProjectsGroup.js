@@ -11,7 +11,7 @@ export default function ProjectsGroup({ group: projects }) {
   }, []);
   return (
     <div className={cn(style.projects_group, { [style.projects_group_mobile]: isMobile })}>
-      {projects.map((project) => <ProjectPreview project={project} />)}
+      {projects.map((project) => <ProjectPreview key={project.name} project={project} />)}
     </div>
   );
 }
