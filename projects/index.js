@@ -1,5 +1,4 @@
 const react = { name: "React" };
-const nodejs = { name: "NodeJS" };
 const golang = { name: "Go" };
 
 const projects = [
@@ -16,14 +15,14 @@ const projects = [
     description: "Search and Play songs from YouTube inside your terminal",
     thumbnail: "https://i.imgur.com/REvt9Kw.png",
     source: "https://github.com/Pauloo27/tuner",
-    madeWith: [react],
+    madeWith: [golang],
   },
   {
     name: "Gotroller",
     description: "MPRIS controller wrote in Go for Polybar with extra GUI",
     thumbnail: "https://i.imgur.com/HrEGG2E.png",
     source: "https://github.com/Pauloo27/gotroller",
-    madeWith: [react],
+    madeWith: [golang],
   },
 ];
 
