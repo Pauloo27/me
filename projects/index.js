@@ -5,7 +5,7 @@ const projects = [
   {
     name: "Homepage",
     description: "A homepage with a ToDo, Trello and Google Calendar Integration",
-    thumbnail: "https://i.imgur.com/BGpE4nu.png",
+    thumbnail: "https://i.imgur.com/ArxvWCB.png",
     source: "https://github.com/Pauloo27/homepage",
     preview: "https://pauloo27.github.io/homepage",
     madeWith: [react],
@@ -13,7 +13,7 @@ const projects = [
   {
     name: "Tuner",
     description: "Search and Play songs from YouTube inside your terminal",
-    thumbnail: "https://i.imgur.com/REvt9Kw.png",
+    thumbnail: "https://i.imgur.com/ArxvWCB.png",
     source: "https://github.com/Pauloo27/tuner",
     madeWith: [golang],
   },
