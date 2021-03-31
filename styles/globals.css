@@ -17,3 +17,24 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/* chrome */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--bg-alt);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--coffee);
+  border-radius: 10px;
+}
+
+/* firefox */
+* {
+  scrollbar-color: var(--coffee) var(--bg-alt);
+  scrollbar-width: thin;
+}

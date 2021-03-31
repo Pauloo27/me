@@ -32,3 +32,13 @@
 .projects_group_mobile {
   flex-direction: column;
 }
+
+.social_container {
+  display: flex;
+  justify-content: center;
+}
+
+.social_item {
+  font-size: 30px;
+  margin: 10px;
+}
