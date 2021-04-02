@@ -1,3 +1,4 @@
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import style from "../styles/ProjectPreview.module.css";
@@ -15,10 +16,10 @@ export default function ProjectPreview({ project }) {
         <div>
           <span>Made with:</span>
           {project.madeWith.map((i) => (
-            <>
-              <FontAwesomeIcon className={style.technology} key={i.name} icon={i.icon} />
+            <React.Fragment key={i.name}>
+              <FontAwesomeIcon className={style.technology} icon={i.icon} />
               {i.name}
-            </>
+            </React.Fragment>
           ))}
         </div>
         {project.preview === undefined ? null

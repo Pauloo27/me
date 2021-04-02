@@ -1,0 +1,12 @@
+.container {
+  padding: 50px 30px 30px 30px;
+  background-color: var(--bg-alt);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.fork_link {
+  font-size: 20px;
+  width: 100%;
+}
