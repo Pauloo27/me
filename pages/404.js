@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Head from "next/head";
+import projects from "../projects";
 import style from "../styles/404.module.css";
 
 export default function Error404() {
+  const randomProject = projects[Math.floor(Math.random() * projects.length)];
   return (
     <>
       <Head>
@@ -14,8 +16,11 @@ export default function Error404() {
           <h3 className={style.error_message}>The page you&apos;re looking for was not found</h3>
         </div>
         <Link href="/">
-          {/* TODO: random project */}
-          <a>Show me a random project</a>
+          <a>Show me a list of projects</a>
+        </Link>
+        or
+        <Link href={randomProject.source}>
+          <a rel="noopener noreferrer" target="_blank">Show me a random project</a>
         </Link>
         <img
           src="/404.gif"
