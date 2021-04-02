@@ -1,6 +1,12 @@
-const react = { name: "React" };
-const golang = { name: "Go" };
-const nodejs = { name: "NodeJS" };
+import {
+  faJs, faNodeJs, faReact,
+} from "@fortawesome/free-brands-svg-icons";
+import { faTerminal } from "@fortawesome/free-solid-svg-icons";
+
+const react = { name: "React", icon: faReact };
+const golang = { name: "GoLang", icon: faTerminal };
+const nodejs = { name: "NodeJS", icon: faNodeJs };
+const js = { name: "VanillaJS", icon: faJs };
 
 const projects = [
   {
@@ -58,28 +64,28 @@ const projects = [
     description: "Web version of the Sneak game",
     thumbnail: "https://i.imgur.com/ArxvWCB.png",
     source: "https://github.com/Pauloo27/snek",
-    madeWith: [golang],
+    madeWith: [js],
   },
   {
     name: "MediaEnem",
     description: "Enem grade calculator",
     thumbnail: "https://i.imgur.com/ArxvWCB.png",
     source: "https://github.com/Pauloo27/MediaEnem",
-    madeWith: [golang],
+    madeWith: [react],
   },
   {
     name: "Reddit",
     description: "Reddit Video Downloader library",
     thumbnail: "https://i.imgur.com/ArxvWCB.png",
     source: "https://github.com/Pauloo27/reddit",
-    madeWith: [golang],
+    madeWith: [nodejs],
   },
   {
     name: "TrucoReact",
     description: "Web version of the card game 'Truco'",
     thumbnail: "https://i.imgur.com/ArxvWCB.png",
     source: "https://github.com/Pauloo27/TrucoReact",
-    madeWith: [golang],
+    madeWith: [react],
   },
 ];
 

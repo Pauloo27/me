@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import style from "../styles/ProjectPreview.module.css";
 
@@ -11,6 +12,15 @@ export default function ProjectPreview({ project }) {
         <Link href={project.source}>
           <a target="_blank" rel="noopener noreferrer">Source</a>
         </Link>
+        <div>
+          <span>Made with:</span>
+          {project.madeWith.map((i) => (
+            <>
+              <FontAwesomeIcon className={style.technology} key={i.name} icon={i.icon} />
+              {i.name}
+            </>
+          ))}
+        </div>
         {project.preview === undefined ? null
           : (
             <Link href={project.preview}>
