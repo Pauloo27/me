@@ -1,10 +1,16 @@
 import Link from "next/link";
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import projects from "../projects";
 import style from "../styles/404.module.css";
 
 export default function Error404() {
-  const randomProject = projects[Math.floor(Math.random() * projects.length)];
+  const [randomProject, setRandomProject] = useState(projects[0]);
+
+  useEffect(() => {
+    setRandomProject(projects[Math.floor(Math.random() * projects.length)]);
+  }, []);
+
   return (
     <>
       <Head>
