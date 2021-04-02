@@ -18,7 +18,7 @@ export default function Error404() {
           <a>Show me a random project</a>
         </Link>
         <img
-          src="https://media1.tenor.com/images/c47c76ddfeac126790c927d84b253183/tenor.gif?itemid=15689695"
+          src="/404.gif"
           alt="GIF of a confused man"
           className={style.gif}
         />
