@@ -24,5 +24,7 @@ module.exports = {
     "react/jsx-props-no-spreading": "off",
     "react/jsx-filename-extension": "off",
     "jsx-a11y/anchor-is-valid": "off",
+    "nonblock-statement-body-position": "off",
+    "curly": "off",
   },
 };
