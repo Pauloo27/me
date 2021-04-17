@@ -9,7 +9,7 @@ export default function Contact() {
     const fetchEmail = () => fetch("/api/email").then((res) => res.json())
       .then(({ user, domain }) => setEmail(`${user}@${domain}`));
 
-    setTimeout(fetchEmail, 5000);
+    setTimeout(fetchEmail, 1000);
   }, []);
 
   const onSubmit = (event) => {
