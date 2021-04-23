@@ -1,12 +1,15 @@
 import { validate, contactConstraint } from "../../lib/validate";
+import executeWebhook from "../../lib/discord";
 
+const STATUS_OK = 200;
 const STATUS_METHOD_NOT_ALLOWED = 405;
 const STATUS_BAD_REQUEST = 400;
+const WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
 
 export default function handler(req, res) {
-  if (req.method !== "POST") {
+  if (req.method !== "POST")
     return res.status(STATUS_METHOD_NOT_ALLOWED).json({ error: "Only POST method is supported" });
-  }
+
   if (!req.body) return res.status(STATUS_BAD_REQUEST).json({ error: "Missing json body" });
 
   let json;
@@ -20,5 +23,8 @@ export default function handler(req, res) {
   if (error !== undefined)
     return res.status(STATUS_BAD_REQUEST).json({ error });
 
-  return res.status(200).json({ error: "i have no clue" });
+  if (WEBHOOK_URL !== undefined)
+    executeWebhook(WEBHOOK_URL, json);
+
+  return res.status(STATUS_OK).json({ ok: true });
 }
