@@ -1,6 +1,6 @@
 import Head from "next/head";
-import { validate, contactConstraint } from "../lib/validate";
 import { useState, useEffect } from "react";
+import { validate, contactConstraint } from "../lib/validate";
 import Form from "../components/Form";
 import FormSubmit from "../components/FormSubmit";
 import FormInput from "../components/FormInput";
@@ -17,7 +17,7 @@ export default function Contact() {
     setTimeout(fetchEmail, 1000);
   }, []);
 
-  const [validatonErrors, setValidationErrors] = useState(undefined);
+  const [validationErrors, setValidationErrors] = useState(undefined);
   const [store, setStore] = useState({});
 
   const updateStore = (key, value) => {
@@ -31,8 +31,9 @@ export default function Contact() {
   }, [store, setValidationErrors]);
 
   const onSubmit = (event) => {
-    // TODO: validate
-    // TODO: call api
+    if (validate(store, contactConstraint) !== undefined) return;
+    fetch("/api/contact", { method: "POST", body: JSON.stringify(store) })
+      .then((res) => res.json()).then(console.log);
   };
 
   return (
@@ -52,12 +53,12 @@ export default function Contact() {
         <h3 className={style.text_center}>Or this form:</h3>
         <Form onSubmit={onSubmit}>
           <FormGroup>
-            <FormInput errors={validatonErrors} store={updateStore} name="name" placeholder="Your name" />
-            <FormInput errors={validatonErrors} store={updateStore} name="email" placeholder="Your email" />
+            <FormInput errors={validationErrors} store={updateStore} name="name" placeholder="Your name" />
+            <FormInput errors={validationErrors} store={updateStore} name="email" placeholder="Your email" />
           </FormGroup>
-          <FormInput errors={validatonErrors} store={updateStore} name="subject" placeholder="Subject" />
-          <FormInput errors={validatonErrors} rows={5} store={updateStore} name="message" placeholder="Message" />
-          <FormSubmit />
+          <FormInput errors={validationErrors} store={updateStore} name="subject" placeholder="Subject" />
+          <FormInput errors={validationErrors} rows={5} store={updateStore} name="message" placeholder="Message" />
+          <FormSubmit errors={validationErrors} />
         </Form>
       </div>
     </>

@@ -35,12 +35,19 @@
 }
 
 .submit {
+  transition: 0.5s background-color;
   cursor: pointer;
   padding: 15px;
   margin: 10px;
   background-color: var(--green);
   border: none;
   color: var(--bg-main);
+}
+
+.submit:disabled {
+  transition: 0.5s background-color;
+  cursor: default;
+  background-color: var(--red);
 }
 
 @media only screen and (max-width: 950px) {
