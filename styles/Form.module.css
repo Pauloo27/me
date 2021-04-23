@@ -34,6 +34,7 @@
   color: var(--red);
 }
 
+
 .submit {
   transition: 0.5s background-color;
   cursor: pointer;
@@ -48,6 +49,20 @@
   transition: 0.5s background-color;
   cursor: default;
   background-color: var(--red);
+}
+
+.sent {
+  background-color: var(--green) !important;
+}
+
+.error_container {
+  padding: 0px 20px;
+  position: fixed;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: var(--red);
+  bottom: 1em;
+  right: 1em;
 }
 
 @media only screen and (max-width: 950px) {

@@ -20,5 +20,5 @@ export default function handler(req, res) {
   if (error !== undefined)
     return res.status(STATUS_BAD_REQUEST).json({ error });
 
-  return res.status(200).json({ ok: true });
+  return res.status(200).json({ error: "i have no clue" });
 }
