@@ -9,6 +9,13 @@
   display: flex;
 }
 
+.input_container {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
 .text_input, .text_area {
   color: var(--text-main);
   padding: 10px;
@@ -16,11 +23,15 @@
   border: solid 3px var(--bg-alt);
   margin: 10px;
   font-size: 18px;
-  flex-grow: 1;
 }
 
 .text_area {
   resize: none;
+}
+
+.input_error {
+  padding: 0 10px;
+  color: var(--red);
 }
 
 .submit {
