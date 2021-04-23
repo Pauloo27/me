@@ -7,7 +7,9 @@ export default function FormSubmit({ errors, sent }) {
   useEffect(() => {
     setEnabled(errors === undefined && !sent);
   }, [errors, sent]);
-  const text = sent ? "Message sent!" : enabled ? "Submit" : "Fill the form before submitting";
+  let text;
+  if (sent) text = "Message sent";
+  else text = enabled ? "Submit" : "Fill the form before submitting";
   return (
     <button
       disabled={!enabled}
