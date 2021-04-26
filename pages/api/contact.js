@@ -1,10 +1,11 @@
 import { validate, contactConstraint } from "../../lib/validate";
+import mustGetEnv from "../../lib/env";
 import executeWebhook from "../../lib/discord";
 
 const STATUS_OK = 200;
 const STATUS_METHOD_NOT_ALLOWED = 405;
 const STATUS_BAD_REQUEST = 400;
-const WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
+const WEBHOOK_URL = mustGetEnv("DISCORD_WEBHOOK_URL");
 
 export default function handler(req, res) {
   if (req.method !== "POST")
