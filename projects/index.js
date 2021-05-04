@@ -27,7 +27,7 @@ const projects = [
   {
     name: "Gotroller",
     description: "MPRIS controller wrote in Go for Polybar with extra GUI",
-    thumbnail: "https://i.imgur.com/ArxvWCB.png",
+    thumbnail: "/thumbs/gotroller.jpg",
     source: "https://github.com/Pauloo27/gotroller",
     madeWith: [golang],
   },
@@ -64,7 +64,7 @@ const projects = [
   {
     name: "TrucoReact",
     description: "Web version of the card game 'Truco'",
-    thumbnail: "/thumbs/truco.png",
+    thumbnail: "/thumbs/truco.jpg",
     source: "https://github.com/Pauloo27/TrucoReact",
     preview: "https://pauloo27.github.io/TrucoReact/",
     madeWith: [react],
@@ -72,7 +72,7 @@ const projects = [
   {
     name: "TL;DR",
     description: "TL;DR pages fetcher",
-    thumbnail: "/thumbs/tldr.png",
+    thumbnail: "/thumbs/tldr.jpg",
     source: "https://github.com/Pauloo27/tldr",
     madeWith: [golang],
   },
@@ -87,14 +87,14 @@ const projects = [
   {
     name: "Reddit",
     description: "Reddit Video Downloader library",
-    thumbnail: "/thumbs/reddit.png",
+    thumbnail: "/thumbs/reddit.jpg",
     source: "https://github.com/Pauloo27/reddit",
     madeWith: [nodejs],
   },
   {
     name: "Go MPRIS",
     description: "A Go library for MPRIS",
-    thumbnail: "/thumbs/gompris.png",
+    thumbnail: "/thumbs/gompris.jpg",
     source: "https://github.com/Pauloo27/go-mpris",
     madeWith: [golang],
   },
