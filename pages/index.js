@@ -3,12 +3,10 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faGitlab } from "@fortawesome/free-brands-svg-icons";
 import style from "../styles/Home.module.css";
-import ProjectsGroup from "../components/ProjectsGroup";
-import { group } from "../lib/utils";
+import ProjectPreview from "../components/ProjectPreview";
 import projects from "../projects";
 
 export default function Home() {
-  const projectsGroups = group(projects, 3);
   return (
     <>
       <Head>
@@ -33,7 +31,9 @@ export default function Home() {
           Do you need to know more? Then look at some of my projects:
         </p>
         <div className={style.projects_container}>
-          {projectsGroups.map((g, i) => <ProjectsGroup key={i.toString()} group={g} />)}
+          {projects.map(
+            (project, i) => <ProjectPreview key={i.toString()} project={project} />,
+          )}
         </div>
       </div>
     </>
