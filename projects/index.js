@@ -10,14 +10,6 @@ const js = { name: "VanillaJS", icon: faJs };
 
 const projects = [
   {
-    name: "Homepage",
-    description: "A homepage with a ToDo, Trello and Google Calendar Integration",
-    thumbnail: "/thumbs/homepage.jpg",
-    source: "https://github.com/Pauloo27/homepage",
-    preview: "https://pauloo27.github.io/homepage",
-    madeWith: [react],
-  },
-  {
     name: "Tuner",
     description: "Search and Play songs from YouTube inside your terminal",
     thumbnail: "/thumbs/tuner.jpg",
@@ -39,6 +31,14 @@ const projects = [
     madeWith: [react, nodejs],
   },
   {
+    name: "Homepage",
+    description: "A homepage with a ToDo, Trello and Google Calendar Integration",
+    thumbnail: "/thumbs/homepage.jpg",
+    source: "https://github.com/Pauloo27/homepage",
+    preview: "https://pauloo27.github.io/homepage",
+    madeWith: [react],
+  },
+  {
     name: "Morcego",
     description: "Blind SQLI Tool to fetch size and data",
     thumbnail: "/thumbs/morcego.jpg",
@@ -54,27 +54,25 @@ const projects = [
     madeWith: [js],
   },
   {
-    name: "MediaEnem",
-    description: "Enem grade calculator",
-    thumbnail: "/thumbs/enem.jpg",
-    source: "https://github.com/Pauloo27/MediaEnem",
-    preview: "https://pauloo27.github.io/MediaEnem/",
-    madeWith: [react],
-  },
-  {
-    name: "TrucoReact",
-    description: "Web version of the card game 'Truco'",
-    thumbnail: "/thumbs/truco.jpg",
-    source: "https://github.com/Pauloo27/TrucoReact",
-    preview: "https://pauloo27.github.io/TrucoReact/",
-    madeWith: [react],
-  },
-  {
     name: "TL;DR",
     description: "TL;DR pages fetcher",
     thumbnail: "/thumbs/tldr.jpg",
     source: "https://github.com/Pauloo27/tldr",
     madeWith: [golang],
+  },
+  {
+    name: "GCO",
+    description: "Tool to help writting better commit messages",
+    thumbnail: "/thumbs/gco.jpg",
+    source: "https://github.com/Pauloo27/gco",
+    madeWith: [golang],
+  },
+  {
+    name: "SHOP",
+    description: "A shop managament system with backend and frontend",
+    thumbnail: "/thumbs/shop.jpg",
+    source: "https://github.com/Pauloo27/gco",
+    madeWith: [golang, react],
   },
   {
     name: "NormiGO",
