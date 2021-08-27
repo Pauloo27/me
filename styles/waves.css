@@ -1,0 +1,14 @@
+.wave-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.wave-divider svg {
+  height: 132px;
+}
+
+.wave-divider .shape-fill {
+  fill: #212121;
+}
