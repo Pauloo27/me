@@ -1,0 +1,80 @@
+version: v0
+
+runs:
+  - name: Portifolio
+
+    # Build
+    tasks:
+      - name: build
+        runtime:
+          type: pod
+          arch: amd64
+          containers:
+            - image: node:14
+        steps:
+          - clone:
+          - restore_cache:
+              keys:
+                - node_modules-cache-{{ md5sum "yarn.lock" }}-{{ year }}-{{ month }}-{{ day }}
+              dest_dir: /root/project/node_modules
+          - run:
+              name: install
+              command: yarn install
+          - run:
+              name: build
+              command: yarn build
+          - save_cache:
+              key: node_modules-cache-{{ md5sum "yarn.lock" }}-{{ year }}-{{ month }}-{{ day }}
+              contents:
+                - source_dir: /root/project/node_modules
+                  paths: 
+                    - '**'
+          - save_to_workspace:
+              contents:
+                - source_dir: /root/project/
+                  dest_dir: /root/project/
+                  paths:
+                    - '**'
+
+      # Deploy (when the branch is master)
+      - name: deploy
+        when:
+          branch: master
+        environment:
+          DEPLOY_USER:
+            from_variable: deployuser
+          DEPLOY_PATH:
+            from_variable: deploypath
+          DEPLOY_HOST:
+              from_variable: deployhost
+        depends:
+          - build
+        runtime:
+          type: pod
+          arch: amd64
+          containers:
+            - image: golang:1.16-stretch
+        steps:
+          - restore_workspace:
+              dest_dir: /
+          - run:
+              name: re-create folder
+              command: ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "$DEPLOY_USER@$DEPLOY_HOST" "rm -rf $DEPLOY_PATH; mkdir $DEPLOY_PATH"
+          - run:
+              name: upload node_modules
+              command: scp -B -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ./node_modules $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/
+          - run:
+              name: upload .next
+              command: scp -B -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ./.next $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/
+          - run:
+              name: upload package.json
+              command: scp -B -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ./package.json $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/
+          - run:
+              name: upload public
+              command: scp -B -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ./public $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/
+          - run:
+              name: upload yarn.lock
+              command: scp -B -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ./yarn.lock $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/
+          - run:
+              name: restart
+              command: ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "$DEPLOY_USER@$DEPLOY_HOST" me-restart
