@@ -70,5 +70,11 @@ runs:
               name: upload package.json
               command: scp -B -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ./package.json $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/
           - run:
+              name: upload public
+              command: scp -B -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ./public $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/
+          - run:
+              name: upload yarn.lock
+              command: scp -B -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ./yarn.lock $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/
+          - run:
               name: restart
-              command: ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "$DEPLOY_USER@$DEPLOY_HOST" restart-me
+              command: ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "$DEPLOY_USER@$DEPLOY_HOST" me-restart
