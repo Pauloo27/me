@@ -7,13 +7,9 @@
   border-bottom: 1px solid var(--coffee);
 }
 
-.item, .home {
+.item {
   text-decoration: none;
   padding: 10px;
   border-bottom: 2px solid var(--coffee);
   cursor: pointer;
-}
-
-.item {
-  margin: 0 10px;
 }

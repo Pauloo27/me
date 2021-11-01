@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <header className={style.container}>
       <Link href="/">
-        <a className={style.home}>Home</a>
+        <a className={style.item}>Home</a>
       </Link>
       <div>
         <Link href="/contact">
