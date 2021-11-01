@@ -17,7 +17,7 @@ export default function ProjectPreview({ project }) {
           <span>Made with:</span>
           {project.madeWith.map((i) => (
             <React.Fragment key={i.name}>
-              <FontAwesomeIcon className={style.technology} icon={i.icon} />
+              <FontAwesomeIcon style={{ margin: "0 5px 0 5px" }} icon={i.icon} />
               {i.name}
             </React.Fragment>
           ))}
