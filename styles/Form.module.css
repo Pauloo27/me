@@ -18,11 +18,16 @@
 
 .text_input, .text_area {
   color: var(--text-main);
-  padding: 10px;
+  padding: 10px 15px;
   background-color: var(--bg-main);
-  border: solid 3px var(--bg-alt);
+  border: solid 2px var(--bg-alt);
+  border-bottom: solid 2px var(--bg-alt2);
   margin: 10px;
   font-size: 18px;
+}
+
+.text_input::placeholder, .text_area::placeholder {
+  color: var(--bg-alt2);
 }
 
 .text_area {
