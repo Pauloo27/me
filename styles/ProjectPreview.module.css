@@ -24,6 +24,10 @@
   margin-bottom: auto;
 }
 
+.technology {
+  margin: 0 10px;
+}
+
 .links {
   padding: 10px;
   display: flex;
