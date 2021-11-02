@@ -58,6 +58,9 @@ runs:
           - restore_workspace:
               dest_dir: /
           - run:
+              name: stop
+              command: ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "$DEPLOY_USER@$DEPLOY_HOST" systemctl --user stop me.service
+          - run:
               name: re-create folder
               command: ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "$DEPLOY_USER@$DEPLOY_HOST" "rm -rf $DEPLOY_PATH; mkdir $DEPLOY_PATH"
           - run:
@@ -76,5 +79,5 @@ runs:
               name: upload yarn.lock
               command: scp -B -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ./yarn.lock $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/
           - run:
-              name: restart
-              command: ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "$DEPLOY_USER@$DEPLOY_HOST" me-restart
+              name: start
+              command: ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "$DEPLOY_USER@$DEPLOY_HOST" systemctl --user start me.service
