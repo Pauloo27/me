@@ -15,7 +15,7 @@ runs:
           - clone:
           - restore_cache:
               keys:
-                - node_modules-cache-{{ md5sum "yarn.lock" }}-{{ year }}-{{ month }}-{{ day }}
+                - node_modules-cache-{{ md5sum "yarn.lock" }}-{{ year }}-{{ month }}
               dest_dir: /root/project/node_modules
           - run:
               name: install
@@ -24,7 +24,7 @@ runs:
               name: build
               command: yarn build
           - save_cache:
-              key: node_modules-cache-{{ md5sum "yarn.lock" }}-{{ year }}-{{ month }}-{{ day }}
+              key: node_modules-cache-{{ md5sum "yarn.lock" }}-{{ year }}-{{ month }}
               contents:
                 - source_dir: /root/project/node_modules
                   paths: 
