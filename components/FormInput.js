@@ -1,3 +1,4 @@
+import cn from "classnames";
 import style from "../styles/Form.module.css";
 
 export default function FormInput({
@@ -31,9 +32,16 @@ export default function FormInput({
     );
   };
 
+  const label = error ? `${name}: ${error}` : name;
+
   return (
     <div className={style.input_container}>
-      <span className={style.input_error}>{error}</span>
+      <span className={
+        cn(style.input_label, { [style.input_error]: error })
+      }
+      >
+        {label}
+      </span>
       {getInput()}
     </div>
   );

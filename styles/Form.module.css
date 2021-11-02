@@ -34,11 +34,14 @@
   resize: none;
 }
 
-.input_error {
+.input_label {
   padding: 0 10px;
-  color: var(--red);
+  color: var(--bg-alt2);
 }
 
+.input_error {
+  color: var(--red);
+}
 
 .submit {
   transition: 0.5s background-color;
