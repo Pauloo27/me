@@ -10,6 +10,12 @@
 .item {
   text-decoration: none;
   padding: 10px;
-  border-bottom: 2px solid var(--coffee);
   cursor: pointer;
+  border-bottom: 2px solid var(--text-main);
+  color: var(--text-main);
+}
+
+.selected_item {
+  border-bottom: 2px solid var(--coffee);
+  color: var(--coffee);
 }
