@@ -1,7 +1,7 @@
 version: v0
 
 runs:
-  - name: Portifolio
+  - name: Portfolio
 
     # Build
     tasks:
@@ -17,12 +17,8 @@ runs:
               keys:
                 - node_modules-cache-{{ md5sum "yarn.lock" }}-{{ year }}-{{ month }}
               dest_dir: /root/project/node_modules
-          - run:
-              name: install
-              command: yarn install
-          - run:
-              name: build
-              command: yarn build
+          - run: yarn install
+          - run: yarn build
           - save_cache:
               key: node_modules-cache-{{ md5sum "yarn.lock" }}-{{ year }}-{{ month }}
               contents:
@@ -41,48 +37,32 @@ runs:
         when:
           branch: master
         environment:
-          DEPLOY_USER:
-            from_variable: deployuser
-          DEPLOY_PATH:
-            from_variable: deploypath
-          DEPLOY_HOST:
-              from_variable: deployhost
-          DISCORD_WEBHOOK:
-              from_variable: discordwebhook
+          REGISTRY_URL:
+            from_variable: registry-url
+          REGISTRY_TOKEN:
+            from_variable: registry-token
+          REGISTRY_IMAGE:
+            from_variable: registry-image
         depends:
           - build
         runtime:
-          type: pod
-          arch: amd64
           containers:
-            - image: golang:1.16-stretch
+            - image: gcr.io/kaniko-project/executor:debug
+        shell: /busybox/sh
         steps:
           - restore_workspace:
               dest_dir: /
+          - run: mv /root/project/* /workspace/
           - run:
-              name: stop
-              command: ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "$DEPLOY_USER@$DEPLOY_HOST" systemctl --user stop me.service
+              name: generate docker config
+              command: |
+                cat << EOF > /kaniko/.docker/config.json
+                {
+                  "auths": {
+                    "$REGISTRY_URL": { "auth" : "$REGISTRY_TOKEN" }
+                  }
+                }
+                EOF
           - run:
-              name: re-create folder
-              command: ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "$DEPLOY_USER@$DEPLOY_HOST" "rm -rf $DEPLOY_PATH; mkdir $DEPLOY_PATH"
-          - run:
-              name: upload node_modules
-              command: scp -B -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ./node_modules $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/
-          - run:
-              name: upload .next
-              command: scp -B -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ./.next $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/
-          - run:
-              name: upload package.json
-              command: scp -B -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ./package.json $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/
-          - run:
-              name: upload public
-              command: scp -B -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ./public $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/
-          - run:
-              name: upload yarn.lock
-              command: scp -B -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ./yarn.lock $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/
-          - run:
-              name: create .env 
-              command: ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "$DEPLOY_USER@$DEPLOY_HOST" "echo 'DISCORD_WEBHOOK_URL=$DISCORD_WEBHOOK' > $DEPLOY_PATH/.env"
-          - run:
-              name: start
-              command: ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "$DEPLOY_USER@$DEPLOY_HOST" systemctl --user start me.service
+              name: build docker image
+              command: /kaniko/executor --destination $REGISTRY_URL/$REGISTRY_IMAGE --force
