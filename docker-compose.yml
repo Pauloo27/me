@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  portifolio:
+  portfolio:
     container_name: me_portfolio
     image: me-portfolio:latest
     ports:
