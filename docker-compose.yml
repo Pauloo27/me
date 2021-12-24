@@ -2,8 +2,8 @@ version: '3'
 
 services:
   portifolio:
-    container_name: me_portifolio
-    image: me-portifolio:latest
+    container_name: me_portfolio
+    image: me-portfolio:latest
     ports:
       - 1234:3000
     volumes:
