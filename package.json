@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "docker": "docker build -t me-portfolio .",
-    "lint": "npx eslint --fix ."
+    "lint": "npx eslint .",
+    "lint:fix": "npx eslint --fix ."
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
