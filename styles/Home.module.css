@@ -6,18 +6,28 @@
   flex-direction: column;
 }
 
-.name, .role {
+.name {
   text-transform: uppercase;
   text-align: center;
   margin: 2px;
 }
 
+.description_container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .description {
   font-size: 23px;
   width: 60vw;
-  text-align: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+.more {
+  margin-top: 30px;
 }
 
 .social_container {
@@ -30,3 +40,6 @@
   margin: 10px;
 }
 
+.text_center {
+  text-align: center;
+}

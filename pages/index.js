@@ -1,10 +1,25 @@
+import { useEffect } from "react";
 import Head from "next/head";
+import Router from "next/router";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faGitlab } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faGitlab, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import style from "../styles/Home.module.css";
 
 export default function Home() {
+  useEffect(() => {
+    const onWheel = (e) => {
+      if (e.deltaY <= 20) return;
+      Router.push("/projects");
+    };
+    window.addEventListener("mousewheel", onWheel);
+
+    return () => {
+      window.removeEventListener("mousewheel", onWheel);
+    };
+  }, []);
+
   return (
     <>
       <Head>
@@ -18,15 +33,33 @@ export default function Home() {
               <FontAwesomeIcon icon={faGithub} />
             </a>
           </Link>
+          <Link href="https://linkedin.com/in/paulofaversani/">
+            <a rel="noopener noreferrer" target="_blank" className={style.social_item}>
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
+          </Link>
           <Link href="https://www.gitlab.com/Pauloo27/">
             <a rel="noopener noreferrer" target="_blank" className={style.social_item}>
               <FontAwesomeIcon icon={faGitlab} />
             </a>
           </Link>
         </div>
-        <p className={style.description}>
-          A Software Engineer that loves GoLang and uses Arch btw.
-        </p>
+        <div className={style.description_container}>
+          <p className={style.description}>
+            A Computer Engineering Student that sometimes play with Go and uses
+            Arch btw.
+          </p>
+          <div className={style.more}>
+            <p>
+              Scroll to see some projects I&apos;ve made
+            </p>
+            <Link href="/projects">
+              <a rel="noopener noreferrer" className={style.social_item}>
+                <FontAwesomeIcon icon={faChevronDown} />
+              </a>
+            </Link>
+          </div>
+        </div>
       </div>
     </>
   );
