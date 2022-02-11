@@ -17,11 +17,17 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:url" content="https://pauloo27.dev" />
         <meta property="og:image" content="/icon.png" />
       </Head>
-      <Header />
-      <main className={style.main_container}>
-        <Component {...pageProps} />
-      </main>
-      <Footer />
+      <div className={style.main_container}>
+        <div>
+          <Header />
+          <main className={style.content_container}>
+            <Component {...pageProps} />
+          </main>
+        </div>
+        <div>
+          <Footer />
+        </div>
+      </div>
     </>
   );
 }

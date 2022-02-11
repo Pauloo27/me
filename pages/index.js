@@ -3,8 +3,6 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faGitlab } from "@fortawesome/free-brands-svg-icons";
 import style from "../styles/Home.module.css";
-import ProjectPreview from "../components/ProjectPreview";
-import projects from "../projects";
 
 export default function Home() {
   return (
@@ -28,13 +26,7 @@ export default function Home() {
         </div>
         <p className={style.description}>
           A Software Engineer that loves GoLang and uses Arch btw.
-          Do you need to know more? Then look at some of my projects:
         </p>
-        <div className={style.projects_container}>
-          {projects.map(
-            (project, i) => <ProjectPreview key={i.toString()} project={project} />,
-          )}
-        </div>
       </div>
     </>
   );

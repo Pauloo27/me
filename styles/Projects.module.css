@@ -4,6 +4,13 @@
   justify-content: center;
 }
 
+.projects_container {
+  display: grid;
+  gap: 1rem;
+
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
 .text_center {
   text-align: center;
 }

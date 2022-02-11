@@ -49,7 +49,7 @@ export default function Contact() {
       <Head>
         <title>Contact</title>
       </Head>
-      <div className={style.container}>
+      <div className={style.content_container}>
         <h1 className={style.text_center}>
           Do you want to contact me? You can send me a message in...
         </h1>

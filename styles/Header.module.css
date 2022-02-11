@@ -13,6 +13,7 @@
   cursor: pointer;
   color: var(--coffee);
   border-bottom: 1px solid var(--coffee);
+  margin: 5px;
 }
 
 .selected_item {
