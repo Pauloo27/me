@@ -36,7 +36,9 @@ runs:
       # Deploy (when the branch is master)
       - name: deploy
         when:
-          branch: master
+          branch: 
+            - master
+            - dev
         environment:
           REGISTRY_URL:
             from_variable: registry-url
@@ -65,5 +67,5 @@ runs:
                 }
                 EOF
           - run:
-              name: build docker image
+              name: build and push docker image
               command: /kaniko/executor --destination $REGISTRY_URL/$REGISTRY_IMAGE --force
