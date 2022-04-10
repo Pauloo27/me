@@ -35,14 +35,12 @@ export default function FormInput({
   const label = error ? `${name}: ${error}` : name;
 
   return (
-    <div className={style.input_container}>
-      <span className={
-        cn(style.input_label, { [style.input_error]: error })
-      }
-      >
-        {label}
-      </span>
+    <label className={
+      cn(style.input_label, { [style.input_error]: error })
+    }
+    >
+      {label}
       {getInput()}
-    </div>
+    </label>
   );
 }
