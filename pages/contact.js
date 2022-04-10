@@ -15,7 +15,7 @@ export default function Contact() {
     const fetchEmail = () => fetch("/api/email").then((res) => res.json())
       .then(({ user, domain }) => setEmail(`${user}@${domain}`));
 
-    setTimeout(fetchEmail, 1000);
+    setTimeout(fetchEmail, 500);
   }, []);
 
   const [validationErrors, setValidationErrors] = useState(undefined);
