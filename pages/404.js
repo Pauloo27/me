@@ -21,18 +21,21 @@ export default function Error404() {
           <h1 className={style.error_code}>404</h1>
           <h3 className={style.error_message}>The page you&apos;re looking for was not found</h3>
         </div>
-        <Link href="/">
-          <a>Show me a list of projects</a>
-        </Link>
-        or
-        <Link href={randomProject.source}>
-          <a rel="noopener noreferrer" target="_blank">Show me a random project</a>
-        </Link>
         <img
           src="/404.gif"
           alt="GIF of a confused man"
           className={style.gif}
         />
+        <h3>Useful links:</h3>
+        <Link href="/">
+          <a rel="noopener noreferrer">Home</a>
+        </Link>
+        <Link href="/projects">
+          <a rel="noopener noreferrer">Project list</a>
+        </Link>
+        <Link href={randomProject.source}>
+          <a rel="noopener noreferrer" target="_blank">Random project</a>
+        </Link>
       </div>
     </>
   );
