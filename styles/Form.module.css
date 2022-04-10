@@ -9,9 +9,6 @@
   display: flex;
 }
 
-.input_container {
-}
-
 .text_input, .text_area {
   color: var(--text-main);
   padding: 10px 15px;
@@ -55,7 +52,7 @@
 
 .submit:disabled {
   transition: 0.5s background-color;
-  cursor: default;
+  cursor: not-allowed;
   background-color: var(--red);
 }
 
