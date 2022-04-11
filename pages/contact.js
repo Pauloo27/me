@@ -51,8 +51,11 @@ export default function Contact() {
       </Head>
       <div className={style.content_container}>
         <h1 className={style.text_center}>
-          Do you want to contact me? You can send me a message in...
+          Do you want to contact me?
         </h1>
+        <h2 className={style.text_center}>
+          You can send me a message in...
+        </h2>
         <h3 className={style.text_center}>
           My email:
           {" "}
