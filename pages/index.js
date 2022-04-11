@@ -5,10 +5,13 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faGitlab, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { isMobile } from "react-device-detect";
 import style from "../styles/Home.module.css";
 
 export default function Home() {
   useEffect(() => {
+    // that doesn't work on mobile
+    if (isMobile) return () => { };
     const onWheel = (e) => {
       if (e.deltaY <= 20) return;
       Router.push("/projects");
@@ -51,7 +54,11 @@ export default function Home() {
           </p>
           <div className={style.more}>
             <p>
-              Scroll to see some projects I&apos;ve made
+              {
+                isMobile
+                  ? "Click the button bellow to see some projects I've made"
+                  : "Scroll to see some projects I've made"
+              }
             </p>
             <Link href="/projects">
               <a rel="noopener noreferrer" className={style.social_item}>
