@@ -15,7 +15,7 @@ export default function ProjectPreview({ project }) {
         <div>
           <span>Made with:</span>
           {project.madeWith.map((i) => (
-            <span className={style.technology}>
+            <span key={i.name} className={style.technology}>
               {i.name}
             </span>
           ))}

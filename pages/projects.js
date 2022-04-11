@@ -16,7 +16,7 @@ export default function Projects() {
         <div className={style.content_container}>
           <div className={style.projects_container}>
             {projects.map(
-              (project, i) => <ProjectPreview key={i.toString()} project={project} />,
+              (project) => <ProjectPreview key={project.name} project={project} />,
             )}
           </div>
         </div>
