@@ -1,46 +1,48 @@
 import cn from "classnames";
 import style from "@styles/Form.module.css";
 
-export default function FormInput({
-  name, placeholder, store, rows, errors,
-}) {
-  const handleChange = (e) => {
-    store(name, e.target.value);
-  };
-
-  const error = errors?.[name];
-
-  const getInput = () => {
-    if (rows !== undefined && rows >= 2)
-      return (
-        <textarea
-          rows={rows}
-          className={style.text_area}
-          name={name}
-          onChange={handleChange}
-          placeholder={placeholder}
-        />
-      );
-
-    return (
-      <input
-        className={style.text_input}
-        name={name}
-        onChange={handleChange}
-        placeholder={placeholder}
-      />
-    );
-  };
-
-  const label = error ? `${name}: ${error}` : name;
-
+function FormInputPresenter({ error, label, children }) {
   return (
     <label className={
       cn(style.input_label, { [style.input_error]: error })
     }
     >
       {label}
-      {getInput()}
+      {children}
     </label>
   );
 }
+
+function FormInputContainer({
+  name, placeholder, store, rows, errors,
+}) {
+  const isTextArea = rows !== undefined;
+
+  const handleChange = (e) => {
+    store(name, e.target.value);
+  };
+
+  const inputProps = {
+    rows,
+    placeholder,
+    name,
+    className: isTextArea ? style.text_area : style.text_input,
+    onChange: handleChange,
+  };
+
+  const input = isTextArea ? (
+    <textarea {...inputProps} />
+  ) : (
+    <input {...inputProps} />
+  );
+
+  const error = errors?.[name];
+
+  const label = error ? `${name}: ${error}` : name;
+
+  return <FormInputPresenter error={error} label={label}>{input}</FormInputPresenter>;
+}
+
+const FormInput = FormInputContainer;
+
+export default FormInput;

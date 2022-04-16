@@ -6,21 +6,7 @@ import FA from "react-fontawesome";
 import { isMobile } from "react-device-detect";
 import style from "@styles/Home.module.css";
 
-export default function Home() {
-  useEffect(() => {
-    // that doesn't work on mobile
-    if (isMobile) return () => { };
-    const onWheel = (e) => {
-      if (e.deltaY <= 20) return;
-      Router.push("/projects");
-    };
-    window.addEventListener("mousewheel", onWheel);
-
-    return () => {
-      window.removeEventListener("mousewheel", onWheel);
-    };
-  }, []);
-
+function HomePresenter() {
   return (
     <>
       <Head>
@@ -69,3 +55,25 @@ export default function Home() {
     </>
   );
 }
+
+function HomeContainer() {
+  useEffect(() => {
+    // that doesn't work on mobile
+    if (isMobile) return () => { };
+    const onWheel = (e) => {
+      if (e.deltaY <= 20) return;
+      Router.push("/projects");
+    };
+    window.addEventListener("mousewheel", onWheel);
+
+    return () => {
+      window.removeEventListener("mousewheel", onWheel);
+    };
+  }, []);
+
+  return <HomePresenter />;
+}
+
+const Home = HomeContainer;
+
+export default Home;

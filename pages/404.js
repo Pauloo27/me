@@ -4,13 +4,7 @@ import { useEffect, useState } from "react";
 import projects from "@lib/projects";
 import style from "@styles/404.module.css";
 
-export default function Error404() {
-  const [randomProject, setRandomProject] = useState(projects[0]);
-
-  useEffect(() => {
-    setRandomProject(projects[Math.floor(Math.random() * projects.length)]);
-  }, []);
-
+function Error404Presenter({ randomProject }) {
   return (
     <>
       <Head>
@@ -40,3 +34,16 @@ export default function Error404() {
     </>
   );
 }
+
+function Error404Container() {
+  const [randomProject, setRandomProject] = useState(projects[0]);
+
+  useEffect(() => {
+    setRandomProject(projects[Math.floor(Math.random() * projects.length)]);
+  }, []);
+
+  return <Error404Presenter randomProject={randomProject} />;
+}
+
+const Error404 = Error404Container;
+export default Error404;
