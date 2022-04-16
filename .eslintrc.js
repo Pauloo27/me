@@ -1,4 +1,16 @@
 module.exports = {
+  settings: {
+    "import/resolver": {
+      alias: {
+        map: [
+          ["@components", "./components/"],
+          ["@lib", "./lib/"],
+          ["@styles", "./styles/"],
+        ],
+        extensions: [".js"],
+      },
+    },
+  },
   env: {
     browser: true,
     es2021: true,
