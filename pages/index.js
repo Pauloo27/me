@@ -65,10 +65,10 @@ function HomeContainer() {
       if (e.deltaY <= 20) return;
       Router.push("/projects");
     };
-    window.addEventListener("mousewheel", onWheel);
+    window.addEventListener("wheel", onWheel);
 
     return () => {
-      window.removeEventListener("mousewheel", onWheel);
+      window.removeEventListener("wheel", onWheel);
     };
   }, []);
 
