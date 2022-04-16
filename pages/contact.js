@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
+import cn from "classnames";
 import { validate, contactConstraint } from "../lib/validate";
 import Form from "../components/Form";
 import FormSubmit from "../components/FormSubmit";
@@ -9,13 +10,11 @@ import FormResError from "../components/FormResError";
 import style from "../styles/Contact.module.css";
 
 export default function Contact() {
-  const [email, setEmail] = useState("(hidden... wait a little)");
+  const [email, setEmail] = useState(undefined);
 
   useEffect(() => {
-    const fetchEmail = () => fetch("/api/email").then((res) => res.json())
+    fetch("/api/email").then((res) => res.json())
       .then(({ user, domain }) => setEmail(`${user}@${domain}`));
-
-    setTimeout(fetchEmail, 500);
   }, []);
 
   const [validationErrors, setValidationErrors] = useState(undefined);
@@ -56,10 +55,12 @@ export default function Contact() {
         <h2 className={style.text_center}>
           You can send me a message in...
         </h2>
-        <h3 className={style.text_center}>
+        <h3 className={cn(style.text_center)}>
           My email:
           {" "}
-          {email}
+          <span className={cn({ [style.text_blur]: !email })}>
+            {email ?? "00000!000"}
+          </span>
         </h3>
         <h3 className={style.text_center}>Or this form:</h3>
         <Form onSubmit={onSubmit}>
