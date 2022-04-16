@@ -61,13 +61,14 @@
 }
 
 .error_container {
-  padding: 0px 20px;
+  padding: 20px;
   position: fixed;
   overflow: hidden;
   box-sizing: border-box;
   background-color: var(--red);
   bottom: 1em;
   right: 1em;
+  z-index: 1;
 }
 
 @media only screen and (max-width: 950px) {
