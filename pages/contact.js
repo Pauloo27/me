@@ -1,13 +1,13 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import cn from "classnames";
-import { validate, contactConstraint } from "../lib/validate";
-import Form from "../components/Form";
-import FormSubmit from "../components/FormSubmit";
-import FormInput from "../components/FormInput";
-import FormGroup from "../components/FormGroup";
-import FormResError from "../components/FormResError";
-import style from "../styles/Contact.module.css";
+import Form from "@components/Form";
+import FormSubmit from "@components/FormSubmit";
+import FormInput from "@components/FormInput";
+import FormGroup from "@components/FormGroup";
+import FormResError from "@components/FormResError";
+import style from "@styles/Contact.module.css";
+import { validate, contactConstraint } from "@lib/validate";
 
 export default function Contact() {
   const [email, setEmail] = useState(undefined);

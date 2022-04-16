@@ -1,5 +1,5 @@
 import cn from "classnames";
-import style from "../styles/Form.module.css";
+import style from "@styles/Form.module.css";
 
 export default function FormInput({
   name, placeholder, store, rows, errors,

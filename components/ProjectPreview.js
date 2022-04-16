@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import style from "../styles/ProjectPreview.module.css";
+import style from "@styles/ProjectPreview.module.css";
 
 export default function ProjectPreview({ project }) {
   return (

@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import projects from "../lib/projects";
-import style from "../styles/404.module.css";
+import projects from "@lib/projects";
+import style from "@styles/404.module.css";
 
 export default function Error404() {
   const [randomProject, setRandomProject] = useState(projects[0]);

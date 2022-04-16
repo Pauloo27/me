@@ -1,6 +1,6 @@
-import { validate, contactConstraint } from "../../lib/validate";
-import mustGetEnv from "../../lib/env";
-import executeWebhook from "../../lib/discord";
+import { validate, contactConstraint } from "@lib/validate";
+import mustGetEnv from "@lib/env";
+import executeWebhook from "@lib/discord";
 
 const STATUS_OK = 200;
 const STATUS_METHOD_NOT_ALLOWED = 405;

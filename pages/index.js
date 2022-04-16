@@ -4,7 +4,7 @@ import Router from "next/router";
 import Link from "next/link";
 import FA from "react-fontawesome";
 import { isMobile } from "react-device-detect";
-import style from "../styles/Home.module.css";
+import style from "@styles/Home.module.css";
 
 export default function Home() {
   useEffect(() => {

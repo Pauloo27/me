@@ -1,4 +1,4 @@
-import style from "../styles/Form.module.css";
+import style from "@styles/Form.module.css";
 
 export default function FormResError({ error }) {
   if (error === null || error === undefined) return null;

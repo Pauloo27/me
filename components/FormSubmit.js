@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import cn from "classnames";
-import style from "../styles/Form.module.css";
+import style from "@styles/Form.module.css";
 
 export default function FormSubmit({ errors, sent }) {
   const [enabled, setEnabled] = useState(false);

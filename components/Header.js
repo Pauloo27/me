@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import cn from "classnames";
-import style from "../styles/Header.module.css";
+import style from "@styles/Header.module.css";
 
 const routeGroups = [
   {
