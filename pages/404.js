@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import projects from "@lib/projects";
 import style from "@styles/404.module.css";
+import commonStyle from "@styles/Common.module.css";
 
 function Error404Presenter({ randomProject }) {
   return (
@@ -10,7 +11,7 @@ function Error404Presenter({ randomProject }) {
       <Head>
         <title>404 - Page not found</title>
       </Head>
-      <div className={style.content_container}>
+      <div className={commonStyle.page_container}>
         <div className={style.error_container}>
           <h1 className={style.error_code}>404</h1>
           <h3 className={style.error_message}>The page you&apos;re looking for was not found</h3>

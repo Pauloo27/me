@@ -6,7 +6,7 @@ import FormSubmit from "@components/FormSubmit";
 import FormInput from "@components/FormInput";
 import FormGroup from "@components/FormGroup";
 import FormResError from "@components/FormResError";
-import style from "@styles/Contact.module.css";
+import commonStyle from "@styles/Common.module.css";
 import { validate, contactConstraint } from "@lib/validate";
 
 function ContactPresenter({
@@ -17,21 +17,21 @@ function ContactPresenter({
       <Head>
         <title>Contact</title>
       </Head>
-      <div className={style.content_container}>
-        <h1 className={style.text_center}>
+      <div className={commonStyle.page_container}>
+        <h1 className={commonStyle.page_title}>
           Do you want to contact me?
         </h1>
-        <h2 className={style.text_center}>
+        <h2>
           You can send me a message in...
         </h2>
-        <h3 className={cn(style.text_center)}>
+        <h3>
           My email:
           {" "}
-          <span className={cn({ [style.text_blur]: !email })}>
+          <span className={cn({ [commonStyle.text_blur]: !email })}>
             {email ?? "00000!000"}
           </span>
         </h3>
-        <h3 className={style.text_center}>Or this form:</h3>
+        <h3>Or this form:</h3>
         <Form onSubmit={onSubmit}>
           <FormResError error={resErrors} />
           <FormGroup>

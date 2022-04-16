@@ -1,5 +1,5 @@
 import Head from "next/head";
-import style from "@styles/Projects.module.css";
+import commonStyle from "@styles/Common.module.css";
 
 export default function Projects() {
   return (
@@ -7,8 +7,8 @@ export default function Projects() {
       <Head>
         <title>Projects</title>
       </Head>
-      <div className={style.content_container}>
-        <h1 className={style.text_center}>
+      <div className={commonStyle.page_container}>
+        <h1 className={commonStyle.page_title}>
           Work in Progress
         </h1>
       </div>

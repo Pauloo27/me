@@ -1,0 +1,26 @@
+.text_center {
+  text-align: center;
+}
+
+.page_title {
+  text-align: center;
+  margin: 2px;
+}
+
+.page_container {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pad_10px {
+  padding: 10px;
+}
+
+.text_blur {
+  color: transparent;
+  text-shadow: 0 0 5px #fff;
+}

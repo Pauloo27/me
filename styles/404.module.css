@@ -1,22 +1,18 @@
-.content_container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
 .error_container {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0;
 }
 
 .error_code {
+  margin: 0;
   padding: 10px;
   border-right: 2px solid var(--red);
 }
 
 .error_message {
+  margin: 0;
   padding: 10px;
 }
 
