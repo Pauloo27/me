@@ -10,7 +10,7 @@ runs:
           type: pod
           arch: amd64
           containers:
-            - image: node:14
+            - image: node:16
         steps:
           - clone:
           - restore_cache:
