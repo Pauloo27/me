@@ -1,0 +1,14 @@
+.selector_container {
+  display: flex;
+}
+
+.selector_icon {
+  margin-right: 10px;
+}
+
+.selector_select {
+  border: none;
+  background: transparent;
+  color: var(--coffee);
+  background-color: var(--bg-alt);
+}
