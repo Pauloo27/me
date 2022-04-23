@@ -30,15 +30,16 @@ function LanguageSelectorContainer() {
   const [language, setLanguage] = useStore((state) => [state.language, state.setLanguage], shallow);
   const router = useRouter();
 
+  // subscribe to the lang change...
+  useEffect(() => useStore.subscribe((state) => {
+    localStorage.setItem("language", state.language);
+    if (router.locale !== state.language)
+      router.replace(router.pathname, router.pathname, { locale: state.language });
+  }, (state) => state.language), [useStore, router]);
+
   // load the language, first try to load from local storage, then from the browser
   // (if we support it), fallback to english.
   useEffect(() => {
-    useStore.subscribe((state) => {
-      localStorage.setItem("language", state.language);
-      if (state.language !== router.locale)
-        router.replace(router.pathname, router.pathname, { locale: state.language });
-    }, (state) => state.language);
-
     let selectedLanguage = localStorage.getItem("language");
     if (!selectedLanguage) {
       const browserLanguage = navigator.language.split("-")[0];
