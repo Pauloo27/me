@@ -5,6 +5,7 @@ import style from "@styles/LanguageSelector.module.css";
 import cn from "classnames";
 import useStore from "@store/global";
 import shallow from "zustand/shallow";
+import { useRouter } from "next/router";
 
 const supportedLanguages = [{ name: "en", displayName: "English" }, { name: "pt", displayName: "Português" }];
 
@@ -27,10 +28,16 @@ function LanguageSelectorPresenter({ language, handleChange }) {
 
 function LanguageSelectorContainer() {
   const [language, setLanguage] = useStore((state) => [state.language, state.setLanguage], shallow);
+  const router = useRouter();
 
   // load the language, first try to load from local storage, then from the browser
   // (if we support it), fallback to english.
   useEffect(() => {
+    useStore.subscribe((state) => {
+      localStorage.setItem("language", state.language);
+      router.replace(router.pathname, router.pathname, { locale: state.language });
+    }, (state) => state.language);
+
     let selectedLanguage = localStorage.getItem("language");
     if (!selectedLanguage) {
       const browserLanguage = navigator.language.split("-")[0];
@@ -43,8 +50,6 @@ function LanguageSelectorContainer() {
   const handleChange = (e) => {
     const newValue = e.target.value;
     setLanguage(newValue);
-    // TODO: use a zustand subscriber (i tried but i've failed)
-    localStorage.setItem("language", newValue);
   };
 
   return <LanguageSelectorPresenter language={language} handleChange={handleChange} />;
