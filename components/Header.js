@@ -1,8 +1,11 @@
 import Link from "next/link";
+import FA from "react-fontawesome";
 import { useRouter } from "next/router";
 import cn from "classnames";
 import style from "@styles/Header.module.css";
 import LanguageSelector from "@components/LanguageSelector";
+import { useEffect, useState } from "react";
+import { isMobile } from "react-device-detect";
 
 const routeGroups = [
   {
@@ -41,7 +44,42 @@ function HeaderLink({ route }) {
   );
 }
 
-export default function Header() {
+function MobileHeaderLinks({ handleClick }) {
+  const routes = routeGroups.reduce((acc, group) => [...acc, ...group.routes], []);
+  return (
+    <div className={style.mobile_menu_container}>
+      <button type="button" className={style.mobile_menu_button} onClick={handleClick}>
+        <FA className={style.mobile_menu_icon} size="lg" name="close" />
+      </button>
+      {routes.map((route) => (
+        route.component ? (
+          <route.component key={route.name} route={route} />
+        ) : (
+          <HeaderLink key={route.name} route={route} />
+        )
+      ))}
+    </div>
+  );
+}
+
+function MobileHeader() {
+  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+  useEffect(() => {
+    router.events.on("routeChangeComplete", () => setIsOpen(false));
+  }, [router]);
+
+  return (
+    <header className={style.container}>
+      <button type="button" className={style.mobile_menu_button} onClick={() => setIsOpen(true)}>
+        <FA className={style.mobile_menu_icon} size="lg" name="bars" />
+      </button>
+      {isOpen && <MobileHeaderLinks handleClick={() => setIsOpen(false)} />}
+    </header>
+  );
+}
+
+function DesktopHeader() {
   return (
     <header className={style.container}>
       {routeGroups.map((group) => (
@@ -57,4 +95,9 @@ export default function Header() {
       ))}
     </header>
   );
+}
+
+export default function Header() {
+  if (isMobile) return <MobileHeader />;
+  return <DesktopHeader />;
 }
