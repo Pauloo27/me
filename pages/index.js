@@ -7,12 +7,15 @@ import { isMobile } from "react-device-detect";
 import style from "@styles/Home.module.css";
 import commonStyle from "@styles/Common.module.css";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 
 function HomePresenter() {
+  const { t } = useTranslation("home");
+
   return (
     <>
       <Head>
-        <title>Me, Paulo</title>
+        <title>{t("pageTitle")}</title>
       </Head>
       <div className={commonStyle.page_container}>
         <h1 className={commonStyle.page_title}>Paulo Eduardo Faversani</h1>
@@ -35,15 +38,14 @@ function HomePresenter() {
         </div>
         <div className={style.description_container}>
           <p className={style.description}>
-            A Computer Engineering Student that sometimes play with Go and uses
-            Arch btw.
+            {t("bio")}
           </p>
           <div className={style.more}>
             <p>
               {
                 isMobile
-                  ? "Click the button bellow to see some projects I've made"
-                  : "Scroll to see some projects I've made"
+                  ? t("clickToSeeMore")
+                  : t("scrollToSeeMore")
               }
             </p>
             <Link href="/projects">
