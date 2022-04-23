@@ -50,7 +50,7 @@ function MobileHeaderLinks({ handleClick }) {
   const routes = routeGroups.reduce((acc, group) => [...acc, ...group.routes], []);
   return (
     <div className={style.mobile_menu_container}>
-      <button type="button" className={style.mobile_menu_button} onClick={handleClick}>
+      <button aria-label="close menu" type="button" className={style.mobile_menu_button} onClick={handleClick}>
         <FA className={style.mobile_menu_icon} size="lg" name="close" />
       </button>
       {routes.map((route) => (
@@ -73,7 +73,7 @@ function MobileHeader() {
 
   return (
     <header className={style.container}>
-      <button type="button" className={style.mobile_menu_button} onClick={() => setIsOpen(true)}>
+      <button aria-label="open menu" type="button" className={style.mobile_menu_button} onClick={() => setIsOpen(true)}>
         <FA className={style.mobile_menu_icon} size="lg" name="bars" />
       </button>
       {isOpen && <MobileHeaderLinks handleClick={() => setIsOpen(false)} />}
