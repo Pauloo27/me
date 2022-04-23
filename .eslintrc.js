@@ -6,6 +6,7 @@ module.exports = {
           ["@components", "./components/"],
           ["@lib", "./lib/"],
           ["@styles", "./styles/"],
+          ["@store", "./store/"],
         ],
         extensions: [".js"],
       },
