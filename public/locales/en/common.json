@@ -6,5 +6,9 @@
   "header.Contact": "Contact",
   "footer.contribute": "This site is open source, contribute on GitHub",
   "footer.madeBy": "Made by",
-  "footer.usingNext": "using NextJS"
+  "footer.usingNext": "using NextJS",
+  "error.required": "is required",
+  "error.invalid": "is invalid",
+  "error.min": "minimum length is {0}",
+  "error.max": "maximum length is {0}"
 }

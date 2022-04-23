@@ -1,5 +1,6 @@
 import cn from "classnames";
 import style from "@styles/Form.module.css";
+import { useTranslation } from "next-i18next";
 
 function FormInputPresenter({ error, label, children }) {
   return (
@@ -16,6 +17,8 @@ function FormInputPresenter({ error, label, children }) {
 function FormInputContainer({
   name, displayName, placeholder, store, rows, errors,
 }) {
+  const { t } = useTranslation();
+
   const isTextArea = rows !== undefined;
   // eslint-disable-next-line no-param-reassign
   if (!displayName) displayName = name;
@@ -39,8 +42,9 @@ function FormInputContainer({
   );
 
   const error = errors?.[name];
-
-  const label = error ? `${displayName}: ${error}` : displayName;
+  const label = error
+    ? `${displayName}: ${t(`error.${error.type}`).replace("{0}", error.extra)}`
+    : displayName;
 
   return <FormInputPresenter error={error} label={label}>{input}</FormInputPresenter>;
 }
