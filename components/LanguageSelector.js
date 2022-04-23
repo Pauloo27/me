@@ -35,7 +35,8 @@ function LanguageSelectorContainer() {
   useEffect(() => {
     useStore.subscribe((state) => {
       localStorage.setItem("language", state.language);
-      router.replace(router.pathname, router.pathname, { locale: state.language });
+      if (state.language !== router.locale)
+        router.replace(router.pathname, router.pathname, { locale: state.language });
     }, (state) => state.language);
 
     let selectedLanguage = localStorage.getItem("language");
