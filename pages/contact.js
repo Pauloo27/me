@@ -9,44 +9,71 @@ import FormResError from "@components/FormResError";
 import commonStyle from "@styles/Common.module.css";
 import { validate, contactConstraint } from "@lib/validate";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 
 function ContactPresenter({
   email, validationErrors, onSubmit, resErrors, updateStore,
 }) {
+  const { t } = useTranslation("contact");
   return (
     <>
       <Head>
-        <title>Contact</title>
+        <title>{t("pageTitle")}</title>
       </Head>
       <div className={commonStyle.page_container}>
         <h1 className={commonStyle.page_title}>
-          Do you want to contact me?
+          {t("doYouWant")}
         </h1>
         <h2>
-          You can send me a message in...
+          {t("messageMe")}
         </h2>
         <h3>
-          My email:
+          {t("myEmail")}
           {" "}
           <span className={cn({ [commonStyle.text_blur]: !email })}>
             {email ?? "00000!000"}
           </span>
         </h3>
-        <h3>Or this form:</h3>
+        <h3>{t("orThisForm")}</h3>
         <Form onSubmit={onSubmit}>
           <FormResError error={resErrors} />
           <FormGroup>
-            <FormInput errors={validationErrors} store={updateStore} name="name" placeholder="Your name" />
-            <FormInput errors={validationErrors} store={updateStore} name="email" placeholder="Your email" />
+            <FormInput
+              errors={validationErrors}
+              store={updateStore}
+              name="name"
+              displayName={t("name.label")}
+              placeholder={t("name.placeholder")}
+            />
+            <FormInput
+              errors={validationErrors}
+              store={updateStore}
+              name="email"
+              displayName={t("email.label")}
+              placeholder={t("email.placeholder")}
+            />
           </FormGroup>
-          <FormInput errors={validationErrors} store={updateStore} name="subject" placeholder="Subject" />
-          <FormInput errors={validationErrors} rows={5} store={updateStore} name="message" placeholder="Message" />
+          <FormInput
+            errors={validationErrors}
+            store={updateStore}
+            name="subject"
+            displayName={t("subject.label")}
+            placeholder={t("subject.placeholder")}
+          />
+          <FormInput
+            errors={validationErrors}
+            rows={5}
+            store={updateStore}
+            name="message"
+            displayName={t("message.label")}
+            placeholder={t("message.placeholder")}
+          />
           <FormSubmit
             errors={validationErrors}
             submitted={resErrors === null}
-            submittedText="Message sent"
-            submitText="Send"
-            disabledText="Fill the form before submitting"
+            submittedText={t("submitted")}
+            submitText={t("submit")}
+            disabledText={t("fillBeforeSubmit")}
           />
         </Form>
       </div>

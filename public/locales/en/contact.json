@@ -1,0 +1,18 @@
+{
+  "pageTitle": "Contact",
+  "doYouWant": "Do you want to contact me?",
+  "messageMe": "You can send me a message in...",
+  "myEmail": "My e-mail:",
+  "orThisForm": "Or this form:",
+  "name.label": "name",
+  "name.placeholder": "Your name",
+  "email.label": "e-mail",
+  "email.placeholder": "Your e-mail",
+  "subject.label": "subject",
+  "subject.placeholder": "Message subject",
+  "message.label": "message",
+  "message.placeholder": "Message",
+  "fillBeforeSubmit": "Fill the form before submitting",
+  "submit": "Send message",
+  "submitted": "Message sent"
+}

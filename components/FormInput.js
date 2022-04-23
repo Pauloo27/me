@@ -14,9 +14,11 @@ function FormInputPresenter({ error, label, children }) {
 }
 
 function FormInputContainer({
-  name, placeholder, store, rows, errors,
+  name, displayName, placeholder, store, rows, errors,
 }) {
   const isTextArea = rows !== undefined;
+  // eslint-disable-next-line no-param-reassign
+  if (!displayName) displayName = name;
 
   const handleChange = (e) => {
     store(name, e.target.value);
@@ -38,7 +40,7 @@ function FormInputContainer({
 
   const error = errors?.[name];
 
-  const label = error ? `${name}: ${error}` : name;
+  const label = error ? `${displayName}: ${error}` : displayName;
 
   return <FormInputPresenter error={error} label={label}>{input}</FormInputPresenter>;
 }

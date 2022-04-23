@@ -1,0 +1,18 @@
+{
+  "pageTitle": "Contato",
+  "doYouWant": "Você quer entrar em contato?",
+  "messageMe": "Você pode me enviar uma mensagem...",
+  "myEmail": "No meu e-mail:",
+  "orThisForm": "Ou neste formulário:",
+  "name.label": "nome",
+  "name.placeholder": "Seu nome",
+  "email.label": "e-mail",
+  "email.placeholder": "Seu e-mail",
+  "subject.label": "assunto",
+  "subject.placeholder": "Assunto da mensagem",
+  "message.label": "mensagem",
+  "message.placeholder": "Mensagem",
+  "fillBeforeSubmit": "Preencha todos os campos antes de enviar",
+  "submit": "Enviar mensagem",
+  "submitted": "Mensagem enviada"
+}
