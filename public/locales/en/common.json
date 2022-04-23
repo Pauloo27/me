@@ -1,4 +1,10 @@
 {
   "langName": "en",
-  "langDisplayName": "English"
+  "langDisplayName": "English",
+  "header.Home": "Home",
+  "header.Projects": "Projects",
+  "header.Contact": "Contact",
+  "footer.contribute": "This site is open source, contribute on GitHub",
+  "footer.madeBy": "Made by",
+  "footer.usingNext": "using NextJS"
 }

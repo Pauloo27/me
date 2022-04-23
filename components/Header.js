@@ -6,6 +6,7 @@ import style from "@styles/Header.module.css";
 import LanguageSelector from "@components/LanguageSelector";
 import { useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";
+import { useTranslation } from "next-i18next";
 
 const routeGroups = [
   {
@@ -31,6 +32,7 @@ const routeGroups = [
 function HeaderLink({ route }) {
   const router = useRouter();
   const { name, path } = route;
+  const { t } = useTranslation();
 
   return (
     <Link href={path}>
@@ -38,7 +40,7 @@ function HeaderLink({ route }) {
         cn(style.item, { [style.selected_item]: router.route === path })
       }
       >
-        {name}
+        {t(`header.${name}`)}
       </a>
     </Link>
   );
