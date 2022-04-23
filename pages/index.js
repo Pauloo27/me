@@ -6,6 +6,7 @@ import FA from "react-fontawesome";
 import { isMobile } from "react-device-detect";
 import style from "@styles/Home.module.css";
 import commonStyle from "@styles/Common.module.css";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 function HomePresenter() {
   return (
@@ -73,6 +74,14 @@ function HomeContainer() {
   }, []);
 
   return <HomePresenter />;
+}
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common", "home"])),
+    },
+  };
 }
 
 const Home = HomeContainer;

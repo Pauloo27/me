@@ -8,6 +8,7 @@ import FormGroup from "@components/FormGroup";
 import FormResError from "@components/FormResError";
 import commonStyle from "@styles/Common.module.css";
 import { validate, contactConstraint } from "@lib/validate";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 function ContactPresenter({
   email, validationErrors, onSubmit, resErrors, updateStore,
@@ -97,6 +98,14 @@ function ContactContainer() {
       updateStore={updateStore}
     />
   );
+}
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common", "contact"])),
+    },
+  };
 }
 
 const Contact = ContactContainer;

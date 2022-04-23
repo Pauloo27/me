@@ -53,7 +53,7 @@ function Error404Container() {
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["404"])),
+      ...(await serverSideTranslations(locale, ["common", "404"])),
     },
   };
 }
