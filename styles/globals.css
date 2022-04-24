@@ -41,5 +41,5 @@ a {
 /* firefox */
 * {
   scrollbar-color: var(--coffee) var(--bg-alt);
-  scrollbar-width: thin;
+  scrollbar-width: auto;
 }
