@@ -2,7 +2,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import projects from "@lib/projects";
-import style from "@styles/404.module.css";
+import styles from "@styles/404.module.css";
 import commonStyle from "@styles/Common.module.css";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
@@ -16,14 +16,14 @@ function Error404Presenter({ randomProject }) {
         <title>{t("pageTitle")}</title>
       </Head>
       <div className={commonStyle.page_container}>
-        <div className={style.error_container}>
-          <h1 className={style.error_code}>404</h1>
-          <h3 className={style.error_message}>{t("pageNotFound")}</h3>
+        <div className={styles.error_container}>
+          <h1 className={styles.error_code}>404</h1>
+          <h3 className={styles.error_message}>{t("pageNotFound")}</h3>
         </div>
         <img
           src="/404.gif"
           alt="GIF of a confused man"
-          className={style.gif}
+          className={styles.gif}
         />
         <h3>{t("usefulLinks")}</h3>
         <Link href="/">

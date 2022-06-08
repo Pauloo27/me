@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import cn from "classnames";
-import style from "@styles/Form.module.css";
+import styles from "@styles/Form.module.css";
 
 function FormSubmitPresenter({ enabled, text, submitted }) {
   return (
     <button
       disabled={!enabled}
       type="submit"
-      className={cn(style.submit, { [style.sent]: submitted })}
+      className={cn(styles.submit, { [styles.sent]: submitted })}
     >
       {text}
     </button>

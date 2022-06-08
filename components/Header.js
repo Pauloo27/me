@@ -2,7 +2,7 @@ import Link from "next/link";
 import FA from "react-fontawesome";
 import { useRouter } from "next/router";
 import cn from "classnames";
-import style from "@styles/Header.module.css";
+import styles from "@styles/Header.module.css";
 import LanguageSelector from "@components/LanguageSelector";
 import { useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";
@@ -37,7 +37,7 @@ function HeaderLink({ route }) {
   return (
     <Link href={path}>
       <a className={
-        cn(style.item, { [style.selected_item]: router.route === path })
+        cn(styles.item, { [styles.selected_item]: router.route === path })
       }
       >
         {t(`header.${name}`)}
@@ -49,9 +49,9 @@ function HeaderLink({ route }) {
 function MobileHeaderLinks({ handleClick }) {
   const routes = routeGroups.reduce((acc, group) => [...acc, ...group.routes], []);
   return (
-    <div className={style.mobile_menu_container}>
-      <button aria-label="close menu" type="button" className={style.mobile_menu_button} onClick={handleClick}>
-        <FA className={style.mobile_menu_icon} size="lg" name="close" />
+    <div className={styles.mobile_menu_container}>
+      <button aria-label="close menu" type="button" className={styles.mobile_menu_button} onClick={handleClick}>
+        <FA className={styles.mobile_menu_icon} size="lg" name="close" />
       </button>
       {routes.map((route) => (
         route.component ? (
@@ -72,9 +72,9 @@ function MobileHeader() {
   }, [router]);
 
   return (
-    <header className={style.container}>
-      <button aria-label="open menu" type="button" className={style.mobile_menu_button} onClick={() => setIsOpen(true)}>
-        <FA className={style.mobile_menu_icon} size="lg" name="bars" />
+    <header className={styles.container}>
+      <button aria-label="open menu" type="button" className={styles.mobile_menu_button} onClick={() => setIsOpen(true)}>
+        <FA className={styles.mobile_menu_icon} size="lg" name="bars" />
       </button>
       {isOpen && <MobileHeaderLinks handleClick={() => setIsOpen(false)} />}
     </header>
@@ -83,7 +83,7 @@ function MobileHeader() {
 
 function DesktopHeader() {
   return (
-    <header className={style.container}>
+    <header className={styles.container}>
       {routeGroups.map((group) => (
         <div key={group.name}>
           {group.routes.map((route) => (

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import FA from "react-fontawesome";
 import headerStyle from "@styles/Header.module.css";
-import style from "@styles/LanguageSelector.module.css";
+import styles from "@styles/LanguageSelector.module.css";
 import cn from "classnames";
 import useStore from "@store/global";
 import shallow from "zustand/shallow";
@@ -11,9 +11,9 @@ const supportedLanguages = [{ name: "en", displayName: "English" }, { name: "pt"
 
 function LanguageSelectorPresenter({ language, handleChange }) {
   return (
-    <div className={cn(headerStyle.item, style.selector_container)}>
-      <FA name="language" className={style.selector_icon} />
-      <select value={language} onChange={handleChange} className={style.selector_select}>
+    <div className={cn(headerStyle.item, styles.selector_container)}>
+      <FA name="language" className={styles.selector_icon} />
+      <select value={language} onChange={handleChange} className={styles.selector_select}>
         {
           supportedLanguages.map((lang) => (
             <option key={lang.name} value={lang.name}>

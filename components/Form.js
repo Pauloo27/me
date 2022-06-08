@@ -1,8 +1,8 @@
-import style from "@styles/Form.module.css";
+import styles from "@styles/Form.module.css";
 
 function FormPresenter({ handleSubmit, children }) {
   return (
-    <form onSubmit={handleSubmit} className={style.form}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       {children}
     </form>
   );

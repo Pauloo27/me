@@ -1,11 +1,11 @@
 import cn from "classnames";
-import style from "@styles/Form.module.css";
+import styles from "@styles/Form.module.css";
 import { useTranslation } from "next-i18next";
 
 function FormInputPresenter({ error, label, children }) {
   return (
     <label className={
-      cn(style.input_label, { [style.input_error]: error })
+      cn(styles.input_label, { [styles.input_error]: error })
     }
     >
       {label}
@@ -31,7 +31,7 @@ function FormInputContainer({
     rows,
     placeholder,
     name,
-    className: isTextArea ? style.text_area : style.text_input,
+    className: isTextArea ? styles.text_area : styles.text_input,
     onChange: handleChange,
   };
 

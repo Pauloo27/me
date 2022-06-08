@@ -4,7 +4,7 @@ import "@styles/waves.css";
 import Head from "next/head";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
-import style from "@styles/App.module.css";
+import styles from "@styles/App.module.css";
 import { appWithTranslation, useTranslation } from "next-i18next";
 
 function MyApp({ Component, pageProps }) {
@@ -26,10 +26,10 @@ function MyApp({ Component, pageProps }) {
           content={t("bio")}
         />
       </Head>
-      <div className={style.main_container}>
+      <div className={styles.main_container}>
         <div>
           <Header />
-          <main className={style.content_container}>
+          <main className={styles.content_container}>
             <Component {...pageProps} />
           </main>
         </div>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import style from "@styles/Footer.module.css";
+import styles from "@styles/Footer.module.css";
 import { useTranslation } from "next-i18next";
 
 function WaveSvg() {
@@ -20,9 +20,9 @@ export default function Footer() {
       <div className="wave-divider">
         <WaveSvg />
       </div>
-      <footer className={style.container}>
+      <footer className={styles.container}>
         <Link href="https://www.github.com/Pauloo27/me">
-          <a rel="noopener noreferrer" target="_blank" className={style.fork_link}>
+          <a rel="noopener noreferrer" target="_blank" className={styles.fork_link}>
             {t("footer.contribute")}
           </a>
         </Link>
