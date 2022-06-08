@@ -1,6 +1,6 @@
-import cn from "classnames";
-import styles from "@styles/Form.module.css";
-import { useTranslation } from "next-i18next";
+import cn from 'classnames'
+import styles from '@styles/Form.module.css'
+import { useTranslation } from 'next-i18next'
 
 function FormInputPresenter({ error, label, children }) {
   return (
@@ -11,21 +11,21 @@ function FormInputPresenter({ error, label, children }) {
       {label}
       {children}
     </label>
-  );
+  )
 }
 
 function FormInputContainer({
   name, displayName, placeholder, store, rows, errors,
 }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
-  const isTextArea = rows !== undefined;
+  const isTextArea = rows !== undefined
   // eslint-disable-next-line no-param-reassign
-  if (!displayName) displayName = name;
+  if (!displayName) displayName = name
 
   const handleChange = (e) => {
-    store(name, e.target.value);
-  };
+    store(name, e.target.value)
+  }
 
   const inputProps = {
     rows,
@@ -33,22 +33,22 @@ function FormInputContainer({
     name,
     className: isTextArea ? styles.text_area : styles.text_input,
     onChange: handleChange,
-  };
+  }
 
   const input = isTextArea ? (
     <textarea {...inputProps} />
   ) : (
     <input {...inputProps} />
-  );
+  )
 
-  const error = errors?.[name];
+  const error = errors?.[name]
   const label = error
-    ? `${displayName}: ${t(`error.${error.type}`).replace("{0}", error.extra)}`
-    : displayName;
+    ? `${displayName}: ${t(`error.${error.type}`).replace('{0}', error.extra)}`
+    : displayName
 
-  return <FormInputPresenter error={error} label={label}>{input}</FormInputPresenter>;
+  return <FormInputPresenter error={error} label={label}>{input}</FormInputPresenter>
 }
 
-const FormInput = FormInputContainer;
+const FormInput = FormInputContainer
 
-export default FormInput;
+export default FormInput

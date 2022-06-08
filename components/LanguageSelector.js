@@ -1,13 +1,13 @@
-import { useEffect } from "react";
-import FA from "react-fontawesome";
-import headerStyle from "@styles/Header.module.css";
-import styles from "@styles/LanguageSelector.module.css";
-import cn from "classnames";
-import useStore from "@store/global";
-import shallow from "zustand/shallow";
-import { useRouter } from "next/router";
+import { useEffect } from 'react'
+import FA from 'react-fontawesome'
+import headerStyle from '@styles/Header.module.css'
+import styles from '@styles/LanguageSelector.module.css'
+import cn from 'classnames'
+import useStore from '@store/global'
+import shallow from 'zustand/shallow'
+import { useRouter } from 'next/router'
 
-const supportedLanguages = [{ name: "en", displayName: "English" }, { name: "pt", displayName: "Português" }];
+const supportedLanguages = [{ name: 'en', displayName: 'English' }, { name: 'pt', displayName: 'Português' }]
 
 function LanguageSelectorPresenter({ language, handleChange }) {
   return (
@@ -23,40 +23,40 @@ function LanguageSelectorPresenter({ language, handleChange }) {
         }
       </select>
     </div>
-  );
+  )
 }
 
 function LanguageSelectorContainer() {
-  const [language, setLanguage] = useStore((state) => [state.language, state.setLanguage], shallow);
-  const router = useRouter();
+  const [language, setLanguage] = useStore((state) => [state.language, state.setLanguage], shallow)
+  const router = useRouter()
 
   // subscribe to the lang change...
   useEffect(() => useStore.subscribe((state) => {
-    localStorage.setItem("language", state.language);
+    localStorage.setItem('language', state.language)
     if (router.locale !== state.language)
-      router.replace(router.pathname, router.pathname, { locale: state.language });
-  }, (state) => state.language), [useStore, router]);
+      router.replace(router.pathname, router.pathname, { locale: state.language })
+  }, (state) => state.language), [router])
 
   // load the language, first try to load from local storage, then from the browser
   // (if we support it), fallback to english.
   useEffect(() => {
-    let selectedLanguage = localStorage.getItem("language");
+    let selectedLanguage = localStorage.getItem('language')
     if (!selectedLanguage) {
-      const browserLanguage = navigator.language.split("-")[0];
-      selectedLanguage = supportedLanguages.find((lang) => lang.name === browserLanguage)?.name ?? "en";
+      const browserLanguage = navigator.language.split('-')[0]
+      selectedLanguage = supportedLanguages.find((lang) => lang.name === browserLanguage)?.name ?? 'en'
     }
 
-    setLanguage(selectedLanguage);
-  }, []);
+    setLanguage(selectedLanguage)
+  }, [setLanguage])
 
   const handleChange = (e) => {
-    const newValue = e.target.value;
-    setLanguage(newValue);
-  };
+    const newValue = e.target.value
+    setLanguage(newValue)
+  }
 
-  return <LanguageSelectorPresenter language={language} handleChange={handleChange} />;
+  return <LanguageSelectorPresenter language={language} handleChange={handleChange} />
 }
 
-const LanguageSelector = LanguageSelectorContainer;
+const LanguageSelector = LanguageSelectorContainer
 
-export default LanguageSelector;
+export default LanguageSelector

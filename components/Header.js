@@ -1,38 +1,38 @@
-import Link from "next/link";
-import FA from "react-fontawesome";
-import { useRouter } from "next/router";
-import cn from "classnames";
-import styles from "@styles/Header.module.css";
-import LanguageSelector from "@components/LanguageSelector";
-import { useEffect, useState } from "react";
-import { isMobile } from "react-device-detect";
-import { useTranslation } from "next-i18next";
+import Link from 'next/link'
+import FA from 'react-fontawesome'
+import { useRouter } from 'next/router'
+import cn from 'classnames'
+import styles from '@styles/Header.module.css'
+import LanguageSelector from '@components/LanguageSelector'
+import { useEffect, useState } from 'react'
+import { isMobile } from 'react-device-detect'
+import { useTranslation } from 'next-i18next'
 
 const routeGroups = [
   {
-    name: "left",
+    name: 'left',
     routes: [
-      { path: "/", name: "Home" },
-      { path: "/projects", name: "Projects" },
-      { path: "/contact", name: "Contact" },
+      { path: '/', name: 'Home' },
+      { path: '/projects', name: 'Projects' },
+      { path: '/contact', name: 'Contact' },
     ],
   },
   {
-    name: "middle",
+    name: 'middle',
     routes: [],
   },
   {
-    name: "right",
+    name: 'right',
     routes: [
-      { name: "Language", path: "#", component: LanguageSelector },
+      { name: 'Language', path: '#', component: LanguageSelector },
     ],
   },
-];
+]
 
 function HeaderLink({ route }) {
-  const router = useRouter();
-  const { name, path } = route;
-  const { t } = useTranslation();
+  const router = useRouter()
+  const { name, path } = route
+  const { t } = useTranslation()
 
   return (
     <Link href={path}>
@@ -43,11 +43,11 @@ function HeaderLink({ route }) {
         {t(`header.${name}`)}
       </a>
     </Link>
-  );
+  )
 }
 
 function MobileHeaderLinks({ handleClick }) {
-  const routes = routeGroups.reduce((acc, group) => [...acc, ...group.routes], []);
+  const routes = routeGroups.reduce((acc, group) => [...acc, ...group.routes], [])
   return (
     <div className={styles.mobile_menu_container}>
       <button aria-label="close menu" type="button" className={styles.mobile_menu_button} onClick={handleClick}>
@@ -61,15 +61,15 @@ function MobileHeaderLinks({ handleClick }) {
         )
       ))}
     </div>
-  );
+  )
 }
 
 function MobileHeader() {
-  const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false)
+  const router = useRouter()
   useEffect(() => {
-    router.events.on("routeChangeComplete", () => setIsOpen(false));
-  }, [router]);
+    router.events.on('routeChangeComplete', () => setIsOpen(false))
+  }, [router])
 
   return (
     <header className={styles.container}>
@@ -78,7 +78,7 @@ function MobileHeader() {
       </button>
       {isOpen && <MobileHeaderLinks handleClick={() => setIsOpen(false)} />}
     </header>
-  );
+  )
 }
 
 function DesktopHeader() {
@@ -96,10 +96,10 @@ function DesktopHeader() {
         </div>
       ))}
     </header>
-  );
+  )
 }
 
 export default function Header() {
-  if (isMobile) return <MobileHeader />;
-  return <DesktopHeader />;
+  if (isMobile) return <MobileHeader />
+  return <DesktopHeader />
 }

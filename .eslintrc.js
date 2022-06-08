@@ -1,14 +1,15 @@
 module.exports = {
   settings: {
-    "import/resolver": {
+    'import/resolver': {
       alias: {
         map: [
-          ["@components", "./components/"],
-          ["@lib", "./lib/"],
-          ["@styles", "./styles/"],
-          ["@store", "./store/"],
+          ['@components', './components/'],
+          ['@lib', './lib/'],
+          ['@pages', './pages/'],
+          ['@styles', './styles/'],
+          ['@store', './store/'],
         ],
-        extensions: [".js"],
+        extensions: ['.js'],
       },
     },
   },
@@ -17,28 +18,30 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    "plugin:react/recommended",
-    "airbnb",
+    'plugin:react/recommended',
+    'next/core-web-vitals',
+    'airbnb',
   ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 12,
-    sourceType: "module",
+    sourceType: 'module',
   },
   plugins: [
-    "react",
+    'react',
   ],
   rules: {
-    quotes: ["error", "double"],
-    "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off",
-    "react/jsx-props-no-spreading": "off",
-    "react/jsx-filename-extension": "off",
-    "jsx-a11y/anchor-is-valid": "off",
-    "jsx-a11y/label-has-associated-control": "off",
-    "nonblock-statement-body-position": "off",
-    curly: "off",
+    quotes: ['error', 'single'],
+    semi: ['error', 'never'],
+    'react/prop-types': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/jsx-filename-extension': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    'nonblock-statement-body-position': 'off',
+    curly: 'off',
   },
-};
+}
