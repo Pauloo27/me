@@ -36,7 +36,7 @@ function Error404Presenter({ randomProject }) {
         <Link href="/projects">
           <a rel="noopener noreferrer">{t('usefulLinks.projects')}</a>
         </Link>
-        <Link href={randomProject.source}>
+        <Link href={randomProject.sourceCodeLink}>
           <a rel="noopener noreferrer" target="_blank">{t('usefulLinks.randomProject')}</a>
         </Link>
       </div>

@@ -20,6 +20,10 @@
   padding: 10px;
 }
 
+.mar_x5 {
+  margin: 0 5px;
+}
+
 .text_blur {
   color: transparent;
   text-shadow: 0 0 5px #fff;

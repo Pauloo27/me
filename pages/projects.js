@@ -1,30 +1,21 @@
 import Head from 'next/head'
-import Link from 'next/link'
-import commonStyle from '@styles/Common.module.css'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
+import Carousel from '@components/Carousel'
+import projects from '@lib/projects'
+import styles from '@styles/Projects.module.css'
 
 export default function Projects() {
   const { t } = useTranslation('projects')
+  const items = projects.filter((item) => item.highlighted)
 
   return (
     <>
       <Head>
         <title>{t('pageTitle')}</title>
       </Head>
-      <div className={commonStyle.page_container}>
-        <h1 className={commonStyle.page_title}>
-          {t('wip')}
-        </h1>
-        <h2 className={commonStyle.text_center}>
-          {t('github')}
-          <Link href="https://www.github.com/Pauloo27">
-            <a rel="noopener noreferrer" target="_blank">
-              {t('here')}
-            </a>
-          </Link>
-        </h2>
-      </div>
+      <h1 className={styles.pageTitle}>{t('pageTitle')}</h1>
+      <Carousel items={items} />
     </>
   )
 }
